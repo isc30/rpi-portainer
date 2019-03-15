@@ -13,9 +13,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./data:/data
     labels:
-      - "traefik.enable=true"
       - "traefik.backend=portainer"
-      - "traefik.docker.network=web"
       - "traefik.frontend.rule=Host:portainer.codeisc.com"
       - "traefik.port=9000"
 
