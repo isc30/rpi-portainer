@@ -5,6 +5,8 @@ services:
     container_name: portainer
     image: portainer/portainer:arm
     restart: unless-stopped
+    ports:
+      - 9000:9000
     networks:
       - web
     volumes:
@@ -14,7 +16,7 @@ services:
       - "traefik.enable=true"
       - "traefik.backend=portainer"
       - "traefik.docker.network=web"
-      - "traefik.frontend.rule=Host:portainer.ivansanz.com"
+      - "traefik.frontend.rule=Host:portainer.codeisc.com"
       - "traefik.port=9000"
 
 networks:
