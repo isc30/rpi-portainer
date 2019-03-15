@@ -7,17 +7,17 @@ services:
     restart: unless-stopped
     ports:
       - 9000:9000
-    networks:
-      - web
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./data:/data
     labels:
       - "traefik.enable=true"
       - "traefik.backend=portainer"
-      - "traefik.frontend.rule=Host:portainer.codeisc.com"
+      - "traefik.frontend.rule=Host:192.168.1.113"
       - "traefik.port=9000"
+    networks:
+      - traefik
 
 networks:
-  web:
+  traefik:
     external: true
