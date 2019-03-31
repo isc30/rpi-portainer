@@ -5,17 +5,19 @@ services:
     container_name: "portainer"
     image: "portainer/portainer"
     restart: "unless-stopped"
+    expose:
+      - "9000"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "./data:/data"
     labels:
-      - "traefik.enable=true"
-      - "traefik.backend=portainer"
-      - "traefik.frontend.rule=Host:YOUR_HOSTNAME_HERE"
-      - "traefik.port=9000"
+      traefik.enable: "true"
+      traefik.backend: "portainer"
+      traefik.frontend.rule: "Host:YOUR_HOSTNAME_HERE"
+      traefik.port: "9000"
     networks:
       - traefik
 
 networks:
   traefik:
-    external: true
+    external: "true"
